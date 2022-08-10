@@ -1,6 +1,7 @@
 package com.technoplus.cursomc.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +22,7 @@ public class ClienteResource {
 	public ResponseEntity<?> lista(@PathVariable Integer id) {
 		Cliente obj = service.buscar(id);
 				
-				return ResponseEntity.ok().body(obj);
+				return ResponseEntity.status(HttpStatus.OK).body(obj);
 	}
 
 }
