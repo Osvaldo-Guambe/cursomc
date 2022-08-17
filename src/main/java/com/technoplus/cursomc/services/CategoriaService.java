@@ -1,10 +1,12 @@
 package com.technoplus.cursomc.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.technoplus.cursomc.domain.Categoria;
 import com.technoplus.cursomc.repositories.CategoriaRepository;
+import com.technoplus.cursomc.services.exceptions.DataIntegrityException;
 import com.technoplus.cursomc.services.exceptions.ObjectNotFoundException;
 
 import java.util.Optional;
@@ -34,6 +36,19 @@ public class CategoriaService {
 		return repo.save(obj);
 		
 	}
+	
+	public void delete(Integer id) {
+		find(id);
+		
+		try {
+			repo.deleteById(id);
+		}catch(DataIntegrityViolationException e) {
+			throw new DataIntegrityException("Não é possivel excluir uma categoria que tem produtos");
+		}
+		
+		
+	}
+	
 	
 	
 	
