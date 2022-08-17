@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -20,10 +22,12 @@ public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+  
+	@NotBlank(message = "O campo nome está vazio.")
 	private String nome;
 	
 	//associacao da cotegoria para o producto
-	@JsonManagedReference  //do lado onde eu quero assiciacao
+//	@JsonManagedReference  //do lado onde eu quero assiciacao
 	@ManyToMany(mappedBy="categorias")
 	private List<Producto> productos = new ArrayList<>();
 	
