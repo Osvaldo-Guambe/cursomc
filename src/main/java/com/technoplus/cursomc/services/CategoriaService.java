@@ -9,6 +9,7 @@ import com.technoplus.cursomc.repositories.CategoriaRepository;
 import com.technoplus.cursomc.services.exceptions.DataIntegrityException;
 import com.technoplus.cursomc.services.exceptions.ObjectNotFoundException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,11 +45,12 @@ public class CategoriaService {
 			repo.deleteById(id);
 		}catch(DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possivel excluir uma categoria que tem produtos");
-		}
-		
-		
+		}	
 	}
 	
+	public List<Categoria> findAll(){
+		return repo.findAll();
+	}
 	
 	
 	
