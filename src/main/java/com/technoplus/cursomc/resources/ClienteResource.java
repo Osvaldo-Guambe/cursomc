@@ -22,7 +22,7 @@ public class ClienteResource {
 	public ResponseEntity<?> lista(@PathVariable Integer id) {
 		Cliente obj = service.buscar(id);
 				
-				return ResponseEntity.status(HttpStatus.OK).body(obj);
+		return ResponseEntity.status(HttpStatus.OK).body(obj);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.technoplus.cursomc.domain;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -25,6 +28,12 @@ public class Categoria implements Serializable {
   
 	@NotBlank(message = "O campo nome está vazio.")
 	private String nome;
+	
+	@CreationTimestamp
+	private LocalDateTime created_at;
+	
+	@CreationTimestamp
+	private LocalDateTime updated_at;
 	
 	//associacao da cotegoria para o producto
 //	@JsonManagedReference  //do lado onde eu quero assiciacao
